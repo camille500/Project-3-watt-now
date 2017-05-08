@@ -11,8 +11,7 @@ Prototype for Watt-now that is simulating how you could let festival visitors ge
 
 ## <a name="live"></a>Live link
 
-- [link](#https://p3-wottnow.herokuapp.com/)
-
+[live link](https://p3-wottnow.herokuapp.com/)
 
 ## <a name="started"></a>Getting started
 
