@@ -10,7 +10,7 @@ router.get('/', checkForSession, function(req, res) {
   res.render('dashboard/index')
 });
 
-function checkForSession() {
+function checkForSession(req, res, next) {
   if (req.session.login) {
      next();
    } else {
