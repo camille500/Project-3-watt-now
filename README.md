@@ -2,17 +2,16 @@
 
 ## Table of contents
 - [Concept](#concept)
-- [Optimizing images](#img)
-- [Lazy loading](#lazyloading)
-- [JS remove child-node](#remove)
+- [live link](#live)
+- [Todo/wishlist](#todo)
 
 ## Concept
 Prototype for Watt-now that is simulating how you could let festival visitors generate energie.
 
 
-## <a name="started"></a>Live link
+## <a name="live"></a>Live link
 
-- [link](#remove)
+- [link](#https://p3-wottnow.herokuapp.com/)
 
 
 ## <a name="started"></a>Getting started
