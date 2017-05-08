@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>
+
+<section class="logreg_header">
+  <div>
+    <h1>Registreren</h1>
+    <span>Vul alle velden in om te registreren</span>
+    <p class="error"><%= message %></p>
+  </div>
+</section>
+
+<section class="logreg_form">
+  <form method="post">
+    <input type="text" name="username" placeholder="Kies een gebruikersnaam" />
+    <input type="email" name="mail" placeholder="E-mailadres" />
+    <input type="text" name="hometown" placeholder="Woonplaats" />
+    <input type="password" name="password" placeholder="Kies een wachtwoord" />
+    <input type="submit" value="Registreren">
+    <p>Heb je al een account? <a href="/account/login">Log hier in!</a></p>
+  </form>
+</section>
+
+  <%- include('../partials/foot.ejs') %>
