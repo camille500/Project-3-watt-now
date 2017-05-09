@@ -7,9 +7,12 @@
   const generateData = {
     energyUse() {
       setInterval(function() {
-        let totalAmountPerSecond = Math.floor((Math.random() * 10) + 1);
+        let totalAmountPerSecond = 0.375;
         actualAmount = actualAmount + totalAmountPerSecond;
         console.log(actualAmount);
+        if(actualAmount >= 10000) {
+          actualAmount = actualAmount;
+        }
       }, 1000);
     }
   }
