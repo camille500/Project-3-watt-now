@@ -1,0 +1,20 @@
+<%- include('../partials/head.ejs') %>
+
+<section class="loginHeader">
+  <div>
+    <h1>Inloggen</h1>
+    <span>Vul je gegevens in om in te loggen</span>
+    <p class="error"><%= message %></p>
+  </div>
+</section>
+
+<section class="loginForm">
+  <form method="post">
+    <input type="text" name="username" placeholder="Gebruikersnaam" />
+    <input type="password" name="password" placeholder="Wachtwoord" />
+    <input type="submit" value="Inloggen">
+    <p>Geen account? <a href="/account/register">Maak er een aan!</a></p>
+  </form>
+</section>
+
+  <%- include('../partials/foot.ejs') %>

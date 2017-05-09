@@ -1,0 +1,40 @@
+{
+  "name": "project-3",
+  "version": "1.0.0",
+  "description": "Project 3 of the minor Web Development for Watt Now.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://camille500@github.com/camille500/Project-3-watt-now.git"
+  },
+  "author": "Camille, Janno, Zish & Soraya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camille500/Project-3-watt-now/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "mongodb": "^2.2.25",
+    "nodemon": "^1.11.0",
+    "password-hash": "^1.2.2",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "socket-io": "^1.0.0",
+    "socket.io": "^1.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "homepage": "https://github.com/camille500/Project-3-watt-now#readme"
+}
