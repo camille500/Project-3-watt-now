@@ -6,8 +6,16 @@ const passwordHash = require('password-hash');
 
 /* INDEX ROUTE
 ----------------------------------------- */
-router.get('/', checkForSession, function(req, res) {
+router.get('/', function(req, res) {
   res.render('dashboard/index')
+});
+
+router.get('/settings', checkForSession, function(req,res) {
+  res.render('dashboard/settings')
+});
+
+router.post('/settings', checkForSession, function(req,res) {
+  const collection = db.collection('users');
 });
 
 function checkForSession(req, res, next) {

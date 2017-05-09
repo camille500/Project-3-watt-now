@@ -8,7 +8,7 @@ const passwordHash = require('password-hash');
 ----------------------------------------- */
 router.get('/', function(req, res) {
   if (req.session.login) {
-    res.redirect('/dashboard')
+    res.redirect('/dashboard/')
   } else {
     res.redirect('/account/login');
   }
@@ -34,7 +34,7 @@ router.post('/login', function(req, res) {
         })
         req.session.login = true;
         req.session.data = user;
-        res.redirect('/dashboard/');
+        res.redirect('/dashboard/settings');
       }
     } else {
       res.locals.message = 'De inloggegevens zijn onjuist';
