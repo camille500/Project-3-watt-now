@@ -50,8 +50,9 @@ const indexRouter = require('./routes/index');
 
 /* MIDDLEWARE FOR THE VIEW ENGINE
 ----------------------------------------- */
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+
 
 /* BODY-PARSER FOR READING POST REQUESTS
 ----------------------------------------- */
