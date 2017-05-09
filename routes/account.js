@@ -43,37 +43,37 @@ router.post('/login', function(req, res) {
   });
 });
 
-router.get('/register', function(req, res) {
-  res.locals.message = "";
-  res.render('account/register');
-});
-
-router.post('/register', function(req, res) {
-  const collection = db.collection('users');
-  const regName = req.body.username;
-  const regMail = req.body.mail;
-  const regHometown = req.body.hometown;
-  const regPassword = passwordHash.generate(req.body.password);
-  const regData = {
-    username: regName,
-    mail: regMail,
-    homeTown: regHometown,
-    password: regPassword
-  };
-  collection.findOne({
-    username: regName
-  }, function(err, user) {
-    if (user) {
-      res.locals.message = "De gekozen gebruikersnaam bestaat al";
-      res.render('account/register');
-    } else {
-      collection.save(regData, (err, result) => {
-        if (err) return console.log(err);
-        res.redirect('/account/login');
-      });
-    }
-  });
-});
+// router.get('/register', function(req, res) {
+//   res.locals.message = "";
+//   res.render('account/register');
+// });
+//
+// router.post('/register', function(req, res) {
+//   const collection = db.collection('users');
+//   const regName = req.body.username;
+//   const regMail = req.body.mail;
+//   const regHometown = req.body.hometown;
+//   const regPassword = passwordHash.generate(req.body.password);
+//   const regData = {
+//     username: regName,
+//     mail: regMail,
+//     homeTown: regHometown,
+//     password: regPassword
+//   };
+//   collection.findOne({
+//     username: regName
+//   }, function(err, user) {
+//     if (user) {
+//       res.locals.message = "De gekozen gebruikersnaam bestaat al";
+//       res.render('account/register');
+//     } else {
+//       collection.save(regData, (err, result) => {
+//         if (err) return console.log(err);
+//         res.redirect('/account/login');
+//       });
+//     }
+//   });
+// });
 
 router.get('/logout', function(req, res) {
   const collection = db.collection('users');
