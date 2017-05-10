@@ -1,16 +1,8 @@
-// set the dimensions of the canvas
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 900 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-
 // set the ranges
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
-
-var y = d3.scale.linear().range([height, 90]);
-
-// define the axis
-var xAxis = d3.svg.axis()
+var y = d3.scale.linear().range([height, 0]);
+ // define the axis
+ var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
 
