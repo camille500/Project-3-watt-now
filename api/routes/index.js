@@ -6,15 +6,12 @@ const router = express.Router();
 /* INDEX ROUTE
 ----------------------------------------- */
 router.get('/', function(req, res) {
-  res.render('index')
-}
-
-router.get('/api', function(req, res) {
     const collection = db.collection('targets');
     const ObjectID = require('mongodb').ObjectID;
     collection.findOne({ "_id": ObjectID(process.env.TARGETID) }, function(err, targets) {
         res.send(targets);
     });
+    res.render('index');
 });
 
 // router.post('/', function(req, res) {
