@@ -41,35 +41,42 @@ router.post('/settings', checkForSession, function(req,res) {
 const dataObject = {
   actualAmount: 0,
   timeCount: 0,
-  newDay: 39600,
+  newDay: 1,
   dayNumber: 0,
-  amountPerSecond: 3.75,  // 100x faster as normal
+  amountPerSecond: 20.25,  // 60x faster as normal
   kWhPerLiter: 3.4,
   gramPerLiter: 2640,
   dieselNotUsed: 0,
   co2NotUsed: 0,
 }
 
+
+
 const generateData = {
   getGoals() {
     request('https://p3-wottnow.herokuapp.com/', function (error, response, body) {
       const data = JSON.parse(body);
       dataObject.dayGoals = [data.target1, data.target2, data.target3, data.target4, data.target5];
-      dataObject.dayActual = [0, 0, 0, 0, 0];
       dataObject.totalGoal = data.total;
+      dataObject.hoursPerDay = [10, 10, 10, 10, 10, 12, 12]
+      dataObject.dayActual = [0, 0, 0, 0, 0, 0, 0];
+      dataObject.dayGenerated = [0, 0, 0, 0, 0, 0 ,0];
+      dataObject.totalGenerated = 0;
       generateData.startEnergyUse();
     });
   },
   startEnergyUse() {
     setInterval(function() {
-      dataObject.actualAmount = dataObject.actualAmount + dataObject.amountPerSecond;
-      dataObject.timeCount = dataObject.timeCount + 100;
-      dataObject.dayActual[dataObject.dayNumber] = dataObject.dayActual[dataObject.dayNumber] + dataObject.amountPerSecond;
-      if(dataObject.timeCount === dataObject.newDay) {
-        dataObject.dayNumber ++;
-        dataObject.timeCount = 0;
+    if(dataObject.dayNumber < 7) {
+        dataObject.actualAmount = dataObject.actualAmount + dataObject.amountPerSecond + Math.floor(Math.random() * 4) + 1 ;
+        dataObject.timeCount = dataObject.timeCount + 0.05;
+        dataObject.dayActual[dataObject.dayNumber] = dataObject.dayActual[dataObject.dayNumber] + dataObject.amountPerSecond;
+        if(dataObject.timeCount === dataObject.newDay) {
+          dataObject.dayNumber ++;
+          dataObject.timeCount = 0;
+        }
+        generateData.calculateValues()
       }
-      generateData.calculateValues()
     }, 1000);
   },
   calculateValues() {
@@ -78,6 +85,10 @@ const generateData = {
 }
 
 generateData.getGoals()
+setInterval(function() {
+  dataObject.totalGenerated = dataObject.totalGenerated + 40000;
+  dataObject.dayGenerated[dataObject.dayNumber] = dataObject.dayGenerated[dataObject.dayNumber] + 40000;
+}, 1000);
 
 function checkForSession(req, res, next) {
   if (req.session.login) {
