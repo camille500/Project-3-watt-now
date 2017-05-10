@@ -64,7 +64,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/', indexRouter);
 
-
 /* 404 PAGE
 ----------------------------------------- */
 app.enable('verbose errors');
