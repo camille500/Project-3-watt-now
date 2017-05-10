@@ -1,29 +1,102 @@
-[{
-	"deDatering": "05-09-16",
-	"onzeData": "212",
-},{
-	"deDatering": "06-09-16",
-	"onzeData": "198"
-},{
-	"deDatering": "07-09-16",
-	"onzeData": "310"
-},{
-	"deDatering": "08-09-16",
-	"onzeData": "302"
-},{
-	"deDatering": "09-09-16",
-	"onzeData": "147"
-},{
-	"deDatering": "10-09-16",
-	"onzeData": "156"
-},{
-	"deDatering": "11-09-16",
-	"onzeData": "188"
-},{
-	"deDatering": "12-09-16",
-	"onzeData": "229"
+[
+{
+	"Letter": "A",
+	"KW": 20
 },
 {
-	"deDatering": "13-09-16",
-	"onzeData": "202"
-}]
+	"Letter" : "B",
+	"KW": 12
+},
+{
+	"Letter" : "C",
+	"KW": 47
+},
+{
+	"Letter" : "D",
+	"KW": 34
+},
+{
+	"Letter" : "E",
+	"KW" : 54
+},
+{
+	"Letter" : "F",
+	"KW" : 21
+},
+{
+	"Letter" : "G",
+	"KW" : 57
+},
+{
+	"Letter" : "H",
+	"KW" : 31
+},
+{
+	"Letter" : "I",
+	"KW" : 17
+},
+{
+	"Letter" : "J",
+	"KW" : 5
+},
+{
+	"Letter" : "K",
+	"KW" : 23
+},
+{
+	"Letter" : "L",
+	"KW" : 39
+},
+{
+	"Letter" : "M",
+	"KW" : 29
+},
+{
+	"Letter" : "N",
+	"KW" : 33
+},
+{
+	"Letter" : "O",
+	"KW" : 18
+},
+{
+	"Letter" : "P",
+	"KW" : 35
+},
+{
+	"Letter" : "Q",
+	"KW" : 11
+},
+{
+	"Letter" : "R",
+	"KW" : 45
+},
+{
+	"Letter" : "S",
+	"KW" : 43
+},
+{
+	"Letter" : "T",
+	"KW" : 28
+},
+{
+	"Letter" : "U",
+	"KW" : 26
+},
+{
+	"Letter" : "V",
+	"KW" : 30
+},
+{
+	"Letter" : "X",
+	"KW" : 5
+},
+{
+	"Letter" : "Y",
+	"KW" : 4
+},
+{
+	"Letter" : "Z",
+	"KW" : 2
+}
+]
