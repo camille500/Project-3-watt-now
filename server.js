@@ -36,7 +36,7 @@ app.use(session({
 
 /* SET PORT FOR HEROKU
 ----------------------------------------- */
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3000;
 
 /* ENABLE CACHE AND COMPRESSION
 ----------------------------------------- */
