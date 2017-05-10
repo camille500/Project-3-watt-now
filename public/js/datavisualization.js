@@ -7,7 +7,7 @@ var margin = {top: 20, right: 20, bottom: 70, left: 40},
 // set the ranges
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
-var y = d3.scale.linear().range([height, 0]);
+var y = d3.scale.linear().range([height, 90]);
 
 // define the axis
 var xAxis = d3.svg.axis()
