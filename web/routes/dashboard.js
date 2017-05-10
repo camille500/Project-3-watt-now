@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const passwordHash = require('password-hash');
+const request = require('request');
 
 /* INDEX ROUTE
 ----------------------------------------- */
@@ -36,6 +37,24 @@ router.post('/settings', checkForSession, function(req,res) {
    res.redirect('/dashboard/')
  });
 });
+
+const dataObject = {
+  actualAmount: 0
+}
+
+
+
+const generateData = {
+  getGoals() {
+    request('http://localhost:3005', function (error, response, body) {
+      const data = JSON.parse(body);
+      dataObject.dayGoals = [data.target1, data.target2, data.target3, data.target4, data.target5];
+      dataObject.totalGoal = data.total;
+    });
+  }
+}
+
+generateData.getGoals()
 
 function checkForSession(req, res, next) {
   if (req.session.login) {
