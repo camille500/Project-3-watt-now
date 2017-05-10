@@ -1,18 +1,136 @@
-.bar{
-  fill: steelblue;
+body {
+    padding: 2em;
+    font-family: sans-serif;
 }
 
-.bar:hover{
-  fill: brown;
+.mainWrapper {
+    border: 0.2em #F12D4B solid;
+    position: relative;
+    height: 100%;
+    background-color: #F12D4B;
 }
 
-.axis {
-  font: 10px sans-serif;
+.mainWrapper .logoImage {
+    position: absolute;
+    padding: 0 0.5em;
+    background-color: #ffffff;
+    width: 25em;
+    top: -1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+.mainWrapper .treeOverlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-image: url('../images/tree-overlay.png');
+    z-index: 3;
+    overflow: hidden;
+}
+
+.mainWrapper .treeOverlay img {
+    background-color: transparent;
+}
+
+/* PUPPETS */
+
+.mainWrapper .treeOverlay .manPuppet {
+    position: absolute;
+    transform-origin: bottom center;
+    transform: rotate(-20deg);
+    height: 70vh;
+    left:-18em;
+    top: 10em;
+    animation: puppetMan 20s infinite;
+    transition-timing-function: ease;
+}
+
+.mainWrapper .treeOverlay .womanPuppet {
+    position: absolute;
+    transform-origin: bottom center;
+    transform: rotate(-20deg);
+    height: 70vh;
+    right:-20em;
+    top: 10em;
+    animation: puppetWoman 19s infinite;
+    transition-timing-function: ease;
+}
+
+@keyframes puppetMan {
+    0% {
+        transform: rotate(-20deg);
+    }
+    30% {
+        transform: rotate(-20deg);
+    }
+    35% {
+        transform: rotate(50deg);
+        top: 10em;
+    }
+    40% {
+        transform: rotate(50deg);
+        top: 5em;
+    }
+    45% {
+        top: 10em;
+    }
+    55% {
+        top: 5em;
+        transform: rotate(30deg);
+    }
+    60% {
+        top: 12em;
+    }
+    65% {
+        transform: rotate(50deg);
+        top: 10em;
+    }
+    70% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+@keyframes puppetWoman {
+    0% {
+        transform: rotate(20deg);
+    }
+    30% {
+        transform: rotate(20deg);
+    }
+    35% {
+        transform: rotate(-50deg);
+        top: 10em;
+    }
+    40% {
+        transform: rotate(-50deg);
+        top: 5em;
+    }
+    45% {
+        top: 10em;
+    }
+    55% {
+        top: 5em;
+        transform: rotate(-30deg);
+    }
+    60% {
+        top: 12em;
+    }
+    65% {
+        transform: rotate(-50deg);
+        top: 10em;
+    }
+    70% {
+        transform: rotate(20deg);
+    }
+    100% {
+        transform: rotate(20deg);
+    }
 }
