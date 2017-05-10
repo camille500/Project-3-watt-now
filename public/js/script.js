@@ -13,7 +13,7 @@
   const generateData = {
     energyUse() {
       setInterval(function() {
-        let totalAmountPerSecond = 0.375;
+        let totalAmountPerSecond = 3.75;
         actualAmount = actualAmount + totalAmountPerSecond;
         console.log(`${actualAmount} kWh energy used`);
         generateData.calculatePercentage();
