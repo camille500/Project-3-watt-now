@@ -1,16 +1,11 @@
-// set the dimensions of the canvas
-var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 900 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-
 // set the ranges
-var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+ var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
-var y = d3.scale.linear().range([height, 0]);
+-var y = d3.scale.linear().range([height, 0]);
++var y = d3.scale.linear().range([height, 90]);
 
-// define the axis
-var xAxis = d3.svg.axis()
+ // define the axis
+ var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
 
@@ -25,15 +20,12 @@ var yAxis = d3.svg.axis()
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    .append("g")
+    .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 
 // load the data
-d3.json("/js/data.json", function(error, data) {
-
-    console.log(data);
+d3.json("js/data.json", function(error, data) {
 
     data.forEach(function(d) {
         d.Letter = d.Letter;
@@ -63,17 +55,34 @@ d3.json("/js/data.json", function(error, data) {
       .attr("y", 5)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("KW saved");
+      .text("KW");
 
+    var bars = svg.selectAll('bar').data(data);
+        bars.enter(data).append('rect');// lopen door data en append rect voor elk data item
+        bars
+          .attr("class", "bar")
+          .attr("x", function(d) { return x(d.Letter); })
+          .attr("width", x.rangeBand())
+          .attr("y", function(d) { return y(d.KW); })
+          .attr("height", function(d) { return height - y(d.KW); });
 
-  // Add bar chart
-  svg.selectAll("bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.Letter); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.KW); })
-      .attr("height", function(d) { return height - y(d.KW); });
+    function updateMyData(data) {
+      var refresh = svg.selectAll('.bar')
+        .data(data);
 
+      refresh.exit()
+        .remove();
+
+      refresh.enter()
+        refresh.enter(data).append('rect')
+        .attr("x", function(d) { return x(d.Letter); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.KW); })
+        .attr("height", function(d) { return height - y(d.KW); });
+    }
+
+    setInterval(function() {
+      updateMyData(data);
+      console.log('updatedddddd');
+    }, 5000);
 });
