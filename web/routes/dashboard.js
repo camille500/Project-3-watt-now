@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const passwordHash = require('password-hash');
+const request = require('request');
 
 /* INDEX ROUTE
 ----------------------------------------- */
@@ -36,6 +37,47 @@ router.post('/settings', checkForSession, function(req,res) {
    res.redirect('/dashboard/')
  });
 });
+
+const dataObject = {
+  actualAmount: 0,
+  timeCount: 0,
+  newDay: 39600,
+  dayNumber: 0,
+  amountPerSecond: 3.75,  // 100x faster as normal
+  kWhPerLiter: 3.4,
+  gramPerLiter: 2640,
+  dieselNotUsed: 0,
+  co2NotUsed: 0,
+}
+
+const generateData = {
+  getGoals() {
+    request('https://p3-wottnow.herokuapp.com/', function (error, response, body) {
+      const data = JSON.parse(body);
+      dataObject.dayGoals = [data.target1, data.target2, data.target3, data.target4, data.target5];
+      dataObject.dayActual = [0, 0, 0, 0, 0];
+      dataObject.totalGoal = data.total;
+      generateData.startEnergyUse();
+    });
+  },
+  startEnergyUse() {
+    setInterval(function() {
+      dataObject.actualAmount = dataObject.actualAmount + dataObject.amountPerSecond;
+      dataObject.timeCount = dataObject.timeCount + 100;
+      dataObject.dayActual[dataObject.dayNumber] = dataObject.dayActual[dataObject.dayNumber] + dataObject.amountPerSecond;
+      if(dataObject.timeCount === dataObject.newDay) {
+        dataObject.dayNumber ++;
+        dataObject.timeCount = 0;
+      }
+      generateData.calculateValues()
+    }, 1000);
+  },
+  calculateValues() {
+    console.log(dataObject);
+  }
+}
+
+generateData.getGoals()
 
 function checkForSession(req, res, next) {
   if (req.session.login) {

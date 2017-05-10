@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+html, body {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body {
+    padding: 2em;
+}
+
+.mainWrapper {
+    border: 0.1em #F12D4B solid;
+    position: relative;
+    height: 100%;
+=======
+.bar{
+  fill: steelblue;
+}
+
+.bar:hover{
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+>>>>>>> master
+}
