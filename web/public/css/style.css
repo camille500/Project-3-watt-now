@@ -1,15 +1,18 @@
-html, body {
-    height: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
+.bar{
+  fill: steelblue;
 }
 
-body {
-    padding: 2em;
+.bar:hover{
+  fill: brown;
 }
 
-.mainWrapper {
-    border: 0.1em #F12D4B solid;
-    position: relative;
-    height: 100%;
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
