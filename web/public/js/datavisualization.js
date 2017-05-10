@@ -21,7 +21,7 @@ const yAxis = d3.svg.axis()
   .orient('left')
   .ticks(20);
 
-d3.json('http://localhost:3000/js/moeder.json', (err, data) => {
+d3.json('http://localhost:3000/js/data.json', (err, data) => {
   // Set the ticks
   console.log(data);
 
