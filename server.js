@@ -15,8 +15,6 @@ const io = require('socket.io')(http);
 
 require('dotenv').config();
 
-console.log(process.env)
-
 /* MONGODB CONFIGURATION
 ----------------------------------------- */
 const MongoClient = require('mongodb').MongoClient;
