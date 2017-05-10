@@ -72,14 +72,15 @@ d3.json("/js/data.json", function(error, data) {
         .remove();
 
      refresh.enter()
+
         refresh.enter(data).append('rect')
         .attr("x", function(d) { return x(d.Letter); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.KW); })
         .attr("height", function(d) { return height - y(d.KW); });
     }
-
-   setInterval(function() {
+  
+    setInterval(function() {
       updateMyData(data);
       console.log('updatedddddd');
     }, 5000);
