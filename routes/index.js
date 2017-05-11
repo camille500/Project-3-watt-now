@@ -5,10 +5,18 @@ const router = express.Router();
 
 /* INDEX ROUTE
 ----------------------------------------- */
-router.get('/', function(req, res) {
+router.get('/target', function(req, res) {
     const collection = db.collection('targets');
     const ObjectID = require('mongodb').ObjectID;
     collection.findOne({ "_id": ObjectID(process.env.TARGETID) }, function(err, targets) {
+        res.send(targets);
+    });
+});
+
+router.get('/kwh', function(req, res) {
+    const collection = db.collection('targets');
+    const ObjectID = require('mongodb').ObjectID;
+    collection.findOne({ "_id": ObjectID(process.env.KWHID) }, function(err, targets) {
         res.send(targets);
     });
 });
