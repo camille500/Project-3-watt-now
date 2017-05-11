@@ -34,23 +34,45 @@ app.use(session({
   saveUninitialized: true
 }));
 
+io.on('connection', function (socket) {
+    console.log('hi');
+    setInterval(function() {
+        getKwh();
+        getTarget();
+  }, 10000);
+});
+
 /* SETUP URL JSON
 ----------------------------------------- */
-function getTarget() {
-  const url = "http://104.131.106.189"
-
+function getKwh() {
   request({
-      url: url,
+      url: 'http://104.131.106.189/kwh',
       json: true
   }, function (error, response, body) {
       const data = body;
+      console.log(data.actualKwh);
+      io.emit('kwh', data.actualKwh);
       if (!error && response.statusCode === 200) {
-          console.log('je data', data) // Print the json response
+          console.log('error');
       }
-  })
+  });
 }
 
-getTarget();
+function getTarget() {
+  request({
+      url: 'http://104.131.106.189/',
+      json: true
+  }, function (error, response, body) {
+      const data = body;
+      console.log(data.total);
+      io.emit('total', data.total);
+      if (!error && response.statusCode === 200) {
+          console.log('error');
+      }
+  });
+}
+
+
 
 /* SET PORT FOR HEROKU
 ----------------------------------------- */
