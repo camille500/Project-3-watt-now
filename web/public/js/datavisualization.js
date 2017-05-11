@@ -1,3 +1,21 @@
+(function() {
+
+  var socket = io();
+
+  console.log('iffe');
+
+  socket.on('kwh', function (kwh) {
+      console.log(kwh);
+   });
+
+   socket.on('total', function (total) {
+       console.log(total);
+   });
+
+   //Reken formulie kwh - total + dit ofso, uiteindelijk getal in JSON zetten daarna elke 10 sec met die update functie de D3 barchart updaten
+
+}());
+
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
      width = 900 - margin.left - margin.right,
      height = 805 - margin.top - margin.bottom;
