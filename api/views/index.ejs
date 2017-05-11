@@ -6,11 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script>
-    var ws = new WebSocket('ws://107.170.14.163:3000');
+    var ws = new WebSocket('ws://107.170.14.163:80');
   	ws.addEventListener('open', () => {
   		console.log('Connected!');
   	})
   	ws.addEventListener('message', (message) => {
+      console.log('new message')
   		console.log(message);
   	})
 </script>

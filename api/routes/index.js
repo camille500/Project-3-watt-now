@@ -13,6 +13,14 @@ router.get('/', function(req, res) {
     });
 });
 
+router.get('/kwh', function(req, res) {
+    const collection = db.collection('targets');
+    const ObjectID = require('mongodb').ObjectID;
+    collection.findOne({ "_id": ObjectID(process.env.KWHID) }, function(err, targets) {
+        res.send(targets);
+    });
+});
+
 router.get('/test', function(req, res) {
     res.render('index')
 });
