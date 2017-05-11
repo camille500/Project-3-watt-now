@@ -6,12 +6,12 @@ const request = require('request');
 const session = require('express-session');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const WebSocket = require('ws');
+const http = require('http');
 
 /* DEPENDENCIES CONFIGURATION
 ----------------------------------------- */
 const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
 
 require('dotenv').config();
 
@@ -36,7 +36,7 @@ app.use(session({
 
 /* SET PORT FOR HEROKU
 ----------------------------------------- */
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3000;
 
 /* ENABLE CACHE AND COMPRESSION
 ----------------------------------------- */
@@ -47,12 +47,29 @@ app.use(compression());
 ----------------------------------------- */
 const indexRouter = require('./routes/index');
 
+const server = http.createServer(app);
+const ws = new WebSocket.Server({
+  server
+});
+
+ws.on('connection', socketConnectionMade);
+
+function socketConnectionMade(socket) {
+  socket.on('connection', function() {
+    ws.clients.forEach(function(client) {
+     client.send(message);
+   })
+  })
+  socket.on('message', function(message) {
+    console.log(message);
+  })
+  console.log('connection');
+}
 
 /* MIDDLEWARE FOR THE VIEW ENGINE
 ----------------------------------------- */
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
-
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 /* BODY-PARSER FOR READING POST REQUESTS
 ----------------------------------------- */
@@ -66,13 +83,13 @@ app.use('/', indexRouter);
 
 /* 404 PAGE
 ----------------------------------------- */
-app.enable('verbose errors');
-app.use(function(req, res, next) {
-    res.render('404');
-});
+// app.enable('verbose errors');
+// app.use(function(req, res, next) {
+//     res.render('404');
+// });
 
 /* START THE NPM SERVER
 ----------------------------------------- */
-http.listen(port, function() {
-    console.log(`Server started`);
-});
+server.listen(port, () => {
+  console.log('Started server on http://localhost:' + port)
+})

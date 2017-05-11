@@ -3,7 +3,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 /* INDEX ROUTE
 ----------------------------------------- */
 router.get('/', function(req, res) {
@@ -14,12 +13,9 @@ router.get('/', function(req, res) {
     });
 });
 
-router.post('/', function(req, res) {
-    console.log(res);
+router.get('/test', function(req, res) {
+    res.render('index')
 });
-
-
-
 
 /* EXPORT ROUTER
 ----------------------------------------- */
