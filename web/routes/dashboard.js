@@ -80,7 +80,7 @@ const generateData = {
     }, 1000);
   },
   calculateValues() {
-    console.log(dataObject);
+    // console.log(dataObject);
   }
 }
 
