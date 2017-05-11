@@ -67,7 +67,7 @@ function socketConnectionMade(socket) {
       client.send('test')
     });
     console.log('message');
-  })
+  }
   console.log('connection');
 }
 
