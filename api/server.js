@@ -61,7 +61,7 @@ function socketConnectionMade(socket) {
    })
   })
   socket.on('message', function(message) {
-  ws.broadcast = function broadcast(data) {
+  ws.broadcast = function broadcast(message) {
     ws.clients.forEach(function each(client) {
       console.log('Yup')
       client.send('test')
