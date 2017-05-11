@@ -53,7 +53,7 @@ function getKwh() {
       console.log(data.actualKwh);
       io.emit('kwh', data.actualKwh);
       if (!error && response.statusCode === 200) {
-          console.log('error');
+          console.log('error', error);
       }
   });
 }
@@ -67,7 +67,7 @@ function getTarget() {
       console.log(data.total);
       io.emit('total', data.total);
       if (!error && response.statusCode === 200) {
-          console.log('error');
+          console.log('error', error);
       }
   });
 }

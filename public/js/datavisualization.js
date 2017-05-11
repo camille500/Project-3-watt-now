@@ -1,20 +1,37 @@
-(function() {
+var dataset = [];
+
+function runThis() {
 
   var socket = io();
+  var kwh;
+  var total;
 
-  console.log('iffe');
-
-  socket.on('kwh', function (kwh) {
-      console.log(kwh);
+  socket.on('kwh', function (waarde) {
+      kwh = waarde;
+      console.log('kwh', kwh);
+      calc();
    });
 
-   socket.on('total', function (total) {
-       console.log(total);
+   socket.on('total', function (waarde) {
+       total = waarde;
+       console.log('total', total);
+       calc();
    });
 
-   //Reken formulie kwh - total + dit ofso, uiteindelijk getal in JSON zetten daarna elke 10 sec met die update functie de D3 barchart updaten
+   function calc() {
+     if(kwh != undefined && total != undefined) {
+       var val =  total / kwh;
+       console.log('val after calc', val);
+       var key1 = val;
+      //  dataset.push(key1);
+      dataset[0] = key1;
+     }
+   }
+}
 
-}());
+runThis();
+
+console.log('hij je nem', dataset);
 
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
      width = 900 - margin.left - margin.right,
