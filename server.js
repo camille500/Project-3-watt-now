@@ -63,6 +63,7 @@ function socketConnectionMade(socket) {
   //  })
   })
   socket.on('message', function(kwh) {
+    const collection = db.collection('targets');
     const data = {
       type: 'kwh',
       actualKwh: kwh
