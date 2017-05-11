@@ -51,8 +51,12 @@ const dataObject = {
 }
 
 
-
 const generateData = {
+  doTest() {
+    request('http://104.131.106.189/target', function (error, response, body) {
+      console.log(body)
+    })
+  },
   getGoals() {
     request('https://p3-wottnow.herokuapp.com/', function (error, response, body) {
       const data = JSON.parse(body);
@@ -83,6 +87,10 @@ const generateData = {
     console.log(dataObject);
   }
 }
+
+generateData.doTest()
+generateData.doTest()
+
 
 generateData.getGoals()
 setInterval(function() {
