@@ -70,6 +70,7 @@ function socketConnectionMade(socket) {
   }
   console.log('connection');
 });
+}
 
 /* MIDDLEWARE FOR THE VIEW ENGINE
 ----------------------------------------- */
