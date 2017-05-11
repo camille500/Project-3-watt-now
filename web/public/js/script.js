@@ -15,9 +15,9 @@
       setInterval(function() {
         let totalAmountPerSecond = 3.75;
         actualAmount = actualAmount + totalAmountPerSecond;
-        console.log(`${actualAmount} kWh energy used`);
+        // console.log(`${actualAmount} kWh energy used`);
         generateData.calculatePercentage();
-        console.log(`${totalPercentage}% of total goal reached`);
+        // console.log(`${totalPercentage}% of total goal reached`);
         if(actualAmount >= 10000) {
           actualAmount = actualAmount;
         }

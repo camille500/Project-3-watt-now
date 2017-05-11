@@ -1,3 +1,38 @@
+var dataset = [];
+
+function runThis() {
+
+  var socket = io();
+  var kwh;
+  var total;
+
+  socket.on('kwh', function (waarde) {
+      kwh = waarde;
+      console.log('kwh', kwh);
+      calc();
+   });
+
+   socket.on('total', function (waarde) {
+       total = waarde;
+       console.log('total', total);
+       calc();
+   });
+
+   function calc() {
+     if(kwh != undefined && total != undefined) {
+       var val =  total / kwh;
+       console.log('val after calc', val);
+       var key1 = val;
+      //  dataset.push(key1);
+      dataset[0] = key1;
+     }
+   }
+}
+
+runThis();
+
+console.log('hij je nem', dataset);
+
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
      width = 900 - margin.left - margin.right,
      height = 805 - margin.top - margin.bottom;
