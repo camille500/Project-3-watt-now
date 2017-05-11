@@ -34,6 +34,24 @@ app.use(session({
   saveUninitialized: true
 }));
 
+/* SETUP URL JSON
+----------------------------------------- */
+function getTarget() {
+  const url = "http://104.131.106.189"
+
+  request({
+      url: url,
+      json: true
+  }, function (error, response, body) {
+      const data = body;
+      if (!error && response.statusCode === 200) {
+          console.log('je data', data) // Print the json response
+      }
+  })
+}
+
+getTarget();
+
 /* SET PORT FOR HEROKU
 ----------------------------------------- */
 const port = process.env.PORT || 3000;
