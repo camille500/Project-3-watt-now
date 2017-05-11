@@ -62,9 +62,14 @@ function socketConnectionMade(socket) {
   //    client.send(message);
   //  })
   })
-  socket.on('message', function(message) {
-      console.log(message)
-      console.log('message')
+  socket.on('message', function(kwh) {
+    const data = {
+      type: 'kwh',
+      actualKwh: kwh
+    }
+    collection.findOneAndUpdate({type: data.type}, data, {upsert:true}, function(err, doc) {
+     if (err) return res.send(500, {error: err});
+   });
   });
 }
 
