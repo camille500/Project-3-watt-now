@@ -13,11 +13,6 @@ const http = require('http');
 ----------------------------------------- */
 const app = express();
 
-const server = http.createServer(app);
-const ws = new WebSocket.Server({
-  server
-});
-
 require('dotenv').config();
 
 /* MONGODB CONFIGURATION
@@ -41,7 +36,7 @@ app.use(session({
 
 /* SET PORT FOR HEROKU
 ----------------------------------------- */
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3000;
 
 /* ENABLE CACHE AND COMPRESSION
 ----------------------------------------- */
@@ -52,11 +47,18 @@ app.use(compression());
 ----------------------------------------- */
 const indexRouter = require('./routes/index');
 
+const server = http.createServer(app);
+const ws = new WebSocket.Server({
+  server
+});
+
 ws.on('connection', socketConnectionMade);
 
 function socketConnectionMade(socket) {
   socket.on('connection', function() {
-    console.log('connected')
+    ws.clients.forEach(function(client) {
+     client.send(message);
+   })
   })
   socket.on('message', function(message) {
     console.log(message);
