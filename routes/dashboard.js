@@ -53,7 +53,7 @@ const dataObject = {
 
 const generateData = {
   doTest() {
-    request('http://104.131.106.189/target', function (error, response, body) {
+    request('http://104.131.106.189/kwh', function (error, response, body) {
       console.log(body)
     })
   },
