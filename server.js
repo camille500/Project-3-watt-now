@@ -13,6 +13,8 @@ const http = require('http');
 ----------------------------------------- */
 const app = express();
 
+const count = 0;
+
 require('dotenv').config();
 
 /* MONGODB CONFIGURATION
@@ -56,20 +58,14 @@ ws.on('connection', socketConnectionMade);
 
 function socketConnectionMade(socket) {
   socket.on('connection', function() {
-    ws.clients.forEach(function(client) {
-     client.send(message);
-   })
+  //   ws.clients.forEach(function(client) {
+  //    client.send(message);
+  //  })
   })
   socket.on('message', function(message) {
-  ws.broadcast = function broadcast(message) {
-    ws.clients.forEach(function each(client) {
-      console.log('Yup')
-      client.send('test')
-    });
-    console.log('message');
-  }
-  console.log('connection');
-});
+      console.log(message)
+      console.log('message')
+  });
 }
 
 /* MIDDLEWARE FOR THE VIEW ENGINE
