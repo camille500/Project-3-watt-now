@@ -1,6 +1,6 @@
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
      width = 900 - margin.left - margin.right,
-     height = 500 - margin.top - margin.bottom;
+     height = 805 - margin.top - margin.bottom;
 
 // set the ranges
 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
@@ -32,7 +32,7 @@ d3.json("/js/data.json", function(error, data) {
 
  // scale the range of the data
   x.domain(data.map(function(d) { return d.Letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.KW; })]);
+  y.domain([0, d3.max(data, function(d) { return 100; })]);
 
  // add axis
   svg.append("g")
@@ -79,7 +79,7 @@ d3.json("/js/data.json", function(error, data) {
         .attr("y", function(d) { return y(d.KW); })
         .attr("height", function(d) { return height - y(d.KW); });
     }
-  
+
     setInterval(function() {
       updateMyData(data);
       console.log('updatedddddd');
