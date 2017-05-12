@@ -1,18 +1,18 @@
 .bar{
     fill: rgba(0, 105, 148, 1);
-  }
+}
 
-  .bar:hover{
-    fill: rgba(0, 105, 148, 0.5);
-  }
+.bar:hover{
+fill: rgba(0, 105, 148, 0.5);
+}
 
-	.axis {
-	  font: 10px sans-serif;
-	}
+.axis {
+  font: 10px sans-serif;
+}
 
-	.axis path,
-	.axis line {
-	  fill: none;
-	  stroke: #000;
-	  shape-rendering: crispEdges;
-	}
+.axis path,
+.axis line {
+  fill: #27C86A;
+  stroke: #27C86A;
+  shape-rendering: crispEdges;
+}

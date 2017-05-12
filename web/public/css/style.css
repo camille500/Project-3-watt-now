@@ -53,6 +53,14 @@ svg {
     z-index: 2;
 }
 
+.bar {
+    fill: #27C86A;
+}
+
+.domain {
+    fill: #27C86A;
+}
+
 /* PUPPETS */
 
 .mainWrapper .treeOverlay .manPuppet {
