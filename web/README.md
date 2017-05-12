@@ -10,7 +10,6 @@
 
 ![Dashboard](https://github.com/soraya2/Project-3-watt-now/blob/master/screenshots/screenshot_dashboard.jpg)
 
-
 ## Concept
 The bycicles are connected to an adaptor that stores the energie. The adoptor has an energiemeter that measures how much energie is generated and sends the data throught the nodeMCU to the server. The event organizer sets a goal for that day. During the day the user gets realtime feedback of the progression that is made. The user gets to see a tree that will fill and updates every 30 seconds, and alternately the user gets to see videos and information about how much influance the CO2 saving is having on the sustainabilty. The deadline ends every day at 20.00. When the deadline ends there should be a an show reveal and a a confettie cannon to let the users know that the goal is met.
 
