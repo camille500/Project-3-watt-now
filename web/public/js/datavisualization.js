@@ -115,6 +115,10 @@ var svg = d3.select("main").append("svg")
     setInterval(function() {
       updateMyData(dataset);
       console.log('updatedddddd');
-      console.log(dataset);
+      console.log(dataset[0]);
+
+      if (dataset[0] > '100') {
+          socket.emit('completed');
+      }
   }, 1000);
 // });

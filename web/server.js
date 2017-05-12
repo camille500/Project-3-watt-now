@@ -40,6 +40,10 @@ io.on('connection', function (socket) {
         getKwh();
         getTarget();
   }, 1000);
+
+  socket.on('completed', function() {
+      io.emit('goal reached');
+  });
 });
 
 /* SETUP URL JSON

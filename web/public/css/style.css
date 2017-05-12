@@ -61,6 +61,35 @@ svg {
     fill: #27C86A;
 }
 
+/* CONFETTI */
+
+#confetti{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99999;
+}
+
+#goalSign {
+    background-color: #27C86A;
+    border: 0.1em #F12D4B solid;
+    transform: rotate(-20deg);
+    color: #ffffff;
+    font-size: 3em;
+    position: absolute;
+    top:2em;
+    left:2em;
+    z-index: 99999;
+    padding: 1em;
+    border-radius: 5em;
+}
+
+.hide {
+    display: none;
+}
+
 /* PUPPETS */
 
 .mainWrapper .treeOverlay .manPuppet {
