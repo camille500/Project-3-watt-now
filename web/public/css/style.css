@@ -44,6 +44,64 @@ body {
     background-color: transparent;
 }
 
+.infoOne {
+    position: absolute;
+    z-index: 99999;
+    border: 0.2em #F12D4B solid;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: #F12D4B;
+    border-radius: 1em;
+    left: 4em;
+    top: 4em;
+    animation: info 20s infinite;
+}
+
+.infoTwo {
+    position: absolute;
+    z-index: 99999;
+    border: 0.2em #F12D4B solid;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: #F12D4B;
+    border-radius: 1em;
+    right: 4em;
+    top: 7em;
+    animation: info 25s infinite;
+}
+
+@keyframes info {
+    0% {
+        opacity:0;
+    }
+    60% {
+        opacity:0;
+    }
+    90% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+@keyframes infoTwo {
+    0% {
+        opacity:0;
+    }
+    60% {
+        opacity:0;
+    }
+    90% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
 /* SVG */
 svg {
     position: absolute;
