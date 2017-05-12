@@ -46,7 +46,7 @@ function hcsr04.init(pin_trig, pin_echo, average)
             avg = avg + distance
             tmr.delay(30000)
         end
-        return distance
+        return avg / self.average
     end
 
     return self
