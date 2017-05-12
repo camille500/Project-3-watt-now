@@ -39,7 +39,7 @@ io.on('connection', function (socket) {
     setInterval(function() {
         getKwh();
         getTarget();
-  }, 10000);
+  }, 1000);
 });
 
 /* SETUP URL JSON
