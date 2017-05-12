@@ -5,38 +5,7 @@ const router = express.Router();
 const passwordHash = require('password-hash');
 const request = require('request');
 
-/* INDEX ROUTE
------------------------------------------ */
-router.get('/', function(req, res) {
-  res.render('dashboard/index')
-});
-
-router.get('/settings', checkForSession, function(req,res) {
-  res.render('dashboard/settings')
-});
-
-router.post('/settings', checkForSession, function(req,res) {
-  const collection = db.collection('targets');
-  const target1 = req.body.target1;
-  const target2 = req.body.target2;
-  const target3 = req.body.target3;
-  const target4 = req.body.target4;
-  const target5 = req.body.target5;
-  const total = Number(target1) + Number(target2) + Number(target3) + Number(target4) + Number(target5);
-  const data = {
-    type: 'main',
-    target1: target1,
-    target2: target2,
-    target3: target3,
-    target4: target4,
-    target5: target5,
-    total: total
-  }
-  collection.findOneAndUpdate({type: data.type}, data, {upsert:true}, function(err, doc) {
-   if (err) return res.send(500, {error: err});
-   res.redirect('/dashboard/')
- });
-});
+let kwhMeter = 0;
 
 const dataObject = {
   actualAmount: 0,
@@ -50,11 +19,11 @@ const dataObject = {
   co2NotUsed: 0,
 }
 
-
 const generateData = {
-  doTest() {
+  getKwh() {
     request('http://104.131.106.189/kwh', function (error, response, body) {
-      console.log(body)
+      let kwh = JSON.parse(body)
+      kwhMeter = kwh;
     })
   },
   getGoals() {
@@ -88,8 +57,48 @@ const generateData = {
   }
 }
 
-generateData.doTest()
-generateData.doTest()
+/* INDEX ROUTE
+----------------------------------------- */
+router.get('/', function(req, res) {
+  res.render('dashboard/index')
+});
+
+router.get('/stats1', function(req, res) {
+  generateData.getKwh()
+  console.log(kwhMeter)
+  res.locals.litersBenzine = 1
+  res.render('dashboard/stats1')
+});
+
+router.get('/settings', checkForSession, function(req,res) {
+  res.render('dashboard/settings')
+});
+
+router.post('/settings', checkForSession, function(req,res) {
+  const collection = db.collection('targets');
+  const target1 = req.body.target1;
+  const target2 = req.body.target2;
+  const target3 = req.body.target3;
+  const target4 = req.body.target4;
+  const target5 = req.body.target5;
+  const total = Number(target1) + Number(target2) + Number(target3) + Number(target4) + Number(target5);
+  const data = {
+    type: 'main',
+    target1: target1,
+    target2: target2,
+    target3: target3,
+    target4: target4,
+    target5: target5,
+    total: total
+  }
+  collection.findOneAndUpdate({type: data.type}, data, {upsert:true}, function(err, doc) {
+   if (err) return res.send(500, {error: err});
+   res.redirect('/dashboard/')
+ });
+});
+
+
+generateData.getKwh()
 
 
 generateData.getGoals()

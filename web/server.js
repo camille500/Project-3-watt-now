@@ -54,7 +54,7 @@ function getKwh() {
       json: true
   }, function (error, response, body) {
       const data = body;
-      console.log(data.actualKwh);
+      // console.log(data.actualKwh);
       io.emit('kwh', data.actualKwh);
       if (!error && response.statusCode === 200) {
           console.log('error', error);
@@ -68,7 +68,7 @@ function getTarget() {
       json: true
   }, function (error, response, body) {
       const data = body;
-      console.log(data.total);
+      // console.log(data.total);
       io.emit('total', data.total);
       if (!error && response.statusCode === 200) {
           console.log('error', error);
