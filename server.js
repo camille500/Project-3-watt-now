@@ -68,7 +68,9 @@ function socketConnectionMade(socket) {
       type: 'kwh',
       actualKwh: kwh
     }
-    socket.send(true);
+    ws.clients.forEach(function(client) {
+      client.send('test');
+    })
     collection.findOneAndUpdate({type: data.type}, data, {upsert:true}, function(err, doc) {
      if (err) return res.send(500, {error: err});
    });
