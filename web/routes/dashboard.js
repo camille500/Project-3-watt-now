@@ -94,8 +94,8 @@ generateData.doTest()
 
 generateData.getGoals()
 setInterval(function() {
-  dataObject.totalGenerated = dataObject.totalGenerated + 40000;
-  dataObject.dayGenerated[dataObject.dayNumber] = dataObject.dayGenerated[dataObject.dayNumber] + 40000;
+  // dataObject.totalGenerated = dataObject.totalGenerated + 40000;
+  // dataObject.dayGenerated[dataObject.dayNumber] = dataObject.dayGenerated[dataObject.dayNumber] + 40000;
 }, 1000);
 
 function checkForSession(req, res, next) {

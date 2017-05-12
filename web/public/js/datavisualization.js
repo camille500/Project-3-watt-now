@@ -1,4 +1,4 @@
-var dataset = [];
+var dataset = ['0'];
 
 function runThis() {
 
@@ -58,16 +58,16 @@ var svg = d3.select("main").append("svg")
     .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
 // load the data
-d3.json("/js/data.json", function(error, data) {
-
-   data.forEach(function(d) {
-        d.Letter = d.Letter;
-        d.KW = +d.KW;
-    });
+// d3.json("/js/data.json", function(error, data) {
+   //
+   // data.forEach(function(d) {
+   //      d.Letter = d.Letter;
+   //      d.KW = +d.KW;
+   //  });
 
  // scale the range of the data
-  x.domain(data.map(function(d) { return d.Letter; }));
-  y.domain([0, d3.max(data, function(d) { return 100; })]);
+  // x.domain(data.map(function(d) { return d.Letter; }));
+  y.domain([0, d3.max(dataset, function(d) { return 100; })]);
 
  // add axis
   svg.append("g")
@@ -90,33 +90,33 @@ d3.json("/js/data.json", function(error, data) {
       .style("text-anchor", "end")
       .text("KW");
 
-   var bars = svg.selectAll('bar').data(data);
-        bars.enter(data).append('rect');// lopen door data en append rect voor elk data item
+   var bars = svg.selectAll('bar').data(dataset);
+        bars.enter(dataset).append('rect');// lopen door data en append rect voor elk data item
         bars
           .attr("class", "bar")
-          .attr("x", function(d) { return x(d.Letter); })
+          .attr("x", function(d) { return x(d); })
           .attr("width", x.rangeBand())
-          .attr("y", function(d) { return y(d.KW); })
-          .attr("height", function(d) { return height - y(d.KW); });
+          .attr("y", function(d) { return y(d); })
+          .attr("height", function(d) { return height - y(d); });
 
-   function updateMyData(data) {
-      var refresh = svg.selectAll('.bar')
-        .data(data);
+   function updateMyData(dataset) {
+      var bars = svg.selectAll('bar')
+        .data(dataset);
 
-     refresh.exit()
+        svg.selectAll('rect')
         .remove();
 
-     refresh.enter()
-
-        refresh.enter(data).append('rect')
-        .attr("x", function(d) { return x(d.Letter); })
+        bars.enter(dataset).append('rect')
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d); })
         .attr("width", x.rangeBand())
-        .attr("y", function(d) { return y(d.KW); })
-        .attr("height", function(d) { return height - y(d.KW); });
+        .attr("y", function(d) { return y(d); })
+        .attr("height", function(d) { return height - y(d); });
     }
 
     setInterval(function() {
-      updateMyData(data);
+      updateMyData(dataset);
       console.log('updatedddddd');
+      console.log(dataset);
     }, 5000);
-});
+// });
