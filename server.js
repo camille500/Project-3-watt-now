@@ -68,7 +68,7 @@ function socketConnectionMade(socket) {
       type: 'kwh',
       actualKwh: kwh
     }
-    ws.send(true);
+    socket.send(true);
     collection.findOneAndUpdate({type: data.type}, data, {upsert:true}, function(err, doc) {
      if (err) return res.send(500, {error: err});
    });
